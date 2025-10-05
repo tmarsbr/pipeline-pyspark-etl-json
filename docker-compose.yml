@@ -1,0 +1,65 @@
+version: '3.8'
+name: dsa-pyspark-cluster
+
+services:
+  spark-master:
+    build:
+      context: .
+      target: spark-master
+    image: dsa-pyspark-image:latest
+    container_name: spark-master
+    hostname: spark-master
+    ports:
+      - "9091:8080"
+      - "7077:7077"
+      - "6066:6066"
+    volumes:
+      - ./workspace:/opt/workspace
+    environment:
+      - SPARK_LOCAL_IP=spark-master
+      - SPARK_WORKLOAD=master
+    networks:
+      - spark-network
+
+  spark-worker:
+    build:
+      context: .
+      target: spark-worker
+    image: dsa-pyspark-image:latest
+    depends_on:
+      - spark-master
+    ports:
+      - "8081-8082:8081"
+    volumes:
+      - ./workspace:/opt/workspace
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_DRIVER_MEMORY=512m
+      - SPARK_EXECUTOR_MEMORY=512m
+      - SPARK_WORKLOAD=worker
+      - SPARK_LOCAL_IP=spark-worker
+    networks:
+      - spark-network
+
+  spark-history-server:
+    build:
+      context: .
+      target: spark-history-server
+    image: dsa-pyspark-image:latest
+    container_name: spark-history-server
+    depends_on:
+      - spark-master
+    ports:
+      - "18081:18080"
+    volumes:
+      - ./workspace:/opt/workspace
+    environment:
+      - SPARK_HISTORY_OPTS=-Dspark.history.fs.logDirectory=/opt/workspace/spark-logs
+    networks:
+      - spark-network
+
+networks:
+  spark-network:
+    driver: bridge
