@@ -70,7 +70,7 @@ Este projeto mostra minha habilidade em:
 
 3. **Iniciar o Cluster Spark**:
    ```bash
-   docker-compose -f docker-compose.yml up -d
+   docker compose -f docker-compose.yml up -d
    ```
    
    Aguarde alguns segundos para o cluster inicializar. Acesse:
@@ -108,7 +108,7 @@ Este projeto mostra minha habilidade em:
 
 6. **Parar o Cluster**:
    ```bash
-   docker-compose down
+   docker compose down
    ```
 
 ### Resultados e Aprendizados

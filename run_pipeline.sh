@@ -24,7 +24,7 @@ echo -e "${BLUE}================================================${NC}\n"
 if ! docker ps | grep -q spark-master; then
     echo -e "${YELLOW}[AVISO] Container spark-master não está rodando!${NC}"
     echo -e "${YELLOW}Iniciando cluster Spark...${NC}\n"
-    docker-compose -f docker-compose.yml up -d
+    docker compose -f docker-compose.yml up -d
     echo -e "\n${GREEN}Aguardando cluster inicializar (15 segundos)...${NC}"
     sleep 15
 fi
