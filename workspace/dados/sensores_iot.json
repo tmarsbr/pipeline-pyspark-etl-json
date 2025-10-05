@@ -1,0 +1,67 @@
+[
+  {
+    "sensor_id": "SENS001",
+    "tipo": "temperatura",
+    "localizacao": {
+      "sala": "Datacenter A",
+      "andar": 2,
+      "predio": "Central"
+    },
+    "leitura": 22.5,
+    "unidade": "celsius",
+    "timestamp": "2024-05-10T10:00:00",
+    "status": "normal"
+  },
+  {
+    "sensor_id": "SENS002",
+    "tipo": "umidade",
+    "localizacao": {
+      "sala": "Datacenter A",
+      "andar": 2,
+      "predio": "Central"
+    },
+    "leitura": 65.2,
+    "unidade": "percentual",
+    "timestamp": "2024-05-10T10:00:00",
+    "status": "normal"
+  },
+  {
+    "sensor_id": "SENS003",
+    "tipo": "temperatura",
+    "localizacao": {
+      "sala": "Datacenter B",
+      "andar": 3,
+      "predio": "Central"
+    },
+    "leitura": 28.7,
+    "unidade": "celsius",
+    "timestamp": "2024-05-10T10:00:00",
+    "status": "alerta"
+  },
+  {
+    "sensor_id": "SENS001",
+    "tipo": "temperatura",
+    "localizacao": {
+      "sala": "Datacenter A",
+      "andar": 2,
+      "predio": "Central"
+    },
+    "leitura": 23.1,
+    "unidade": "celsius",
+    "timestamp": "2024-05-10T10:05:00",
+    "status": "normal"
+  },
+  {
+    "sensor_id": "SENS002",
+    "tipo": "umidade",
+    "localizacao": {
+      "sala": "Datacenter A",
+      "andar": 2,
+      "predio": "Central"
+    },
+    "leitura": 66.8,
+    "unidade": "percentual",
+    "timestamp": "2024-05-10T10:05:00",
+    "status": "normal"
+  }
+]
