@@ -14,7 +14,7 @@ services:
       - "7077:7077"
       - "6066:6066"
     volumes:
-      - ./workspace:/opt/workspace
+      - .:/opt/workspace
     environment:
       - SPARK_LOCAL_IP=spark-master
       - SPARK_WORKLOAD=master
@@ -31,7 +31,7 @@ services:
     ports:
       - "8081-8082:8081"
     volumes:
-      - ./workspace:/opt/workspace
+      - .:/opt/workspace
     environment:
       - SPARK_MASTER=spark://spark-master:7077
       - SPARK_WORKER_CORES=1

@@ -51,6 +51,36 @@ Este projeto mostra minha habilidade em:
    - Execute o script PySpark em `jobs/` via Spark Submit.
 4. **Verificar Resultados**: Dados carregados no banco configurado.
 
+### Erros Comuns e Soluções Encontradas Durante o Desenvolvimento
+
+Durante a implementação e testes do pipeline, enfrentei vários desafios técnicos que são comuns em projetos com Docker, PySpark e bancos de dados. Aqui estão os principais erros e como foram resolvidos:
+
+1. **Erro: "No such container: dsa-pyspark-master"**
+   - **Causa**: Nome do container incorreto no comando `docker exec`.
+   - **Solução**: Corrigir o nome para `spark-master` conforme definido no `docker-compose.yml`.
+
+2. **Erro: "spark-submit: command not found"**
+   - **Causa**: Variáveis de ambiente `SPARK_HOME` e `PATH` não configuradas no Dockerfile.
+   - **Solução**: Adicionar `ENV SPARK_HOME=/opt/spark` e `ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin` no estágio `spark-base` do Dockerfile.
+
+3. **Erro: Caminhos relativos não funcionam no container**
+   - **Causa**: Scripts PySpark usando caminhos como `'data/usuarios.json'` em vez de absolutos.
+   - **Solução**: Alterar para caminhos absolutos como `/opt/workspace/dados/usuarios.json`, já que o volume é montado em `/opt/workspace`.
+
+4. **Erro: Volume mount incorreto**
+   - **Causa**: `docker-compose.yml` montando apenas subpastas em vez do projeto inteiro.
+   - **Solução**: Mudar de `./dados:/opt/workspace/dados` para `.:/opt/workspace` para montar todo o projeto.
+
+5. **Erro: "readonly database" ao gravar no SQLite**
+   - **Causa**: Arquivo `usuarios.db` com atributo ReadOnly no sistema de arquivos Windows.
+   - **Solução**: Usar PowerShell para remover o atributo: `Set-ItemProperty -Path "dados\usuarios.db" -Name IsReadOnly -Value $false`. Reiniciar containers para refletir mudanças.
+
+6. **Erro: Falta do driver JDBC para SQLite**
+   - **Causa**: PySpark tentando conectar ao SQLite sem o driver JDBC.
+   - **Solução**: Adicionar `--jars /opt/workspace/dados/sqlite-jdbc-3.44.1.0.jar` ao comando `spark-submit`.
+
+Essas correções garantiram que o pipeline funcionasse end-to-end, processando JSONs, aplicando filtros (idade >35, cidade=Natal, salário<7000) e carregando dados no SQLite via JDBC.
+
 ### Resultados e Aprendizados
 
 Este pipeline não apenas processa JSONs eficientemente, mas me ensinou sobre otimização de queries Spark, tratamento de erros em ETL e design de esquemas de dados. É uma demonstração prática de como transformar desafios de dados em soluções produtivas.

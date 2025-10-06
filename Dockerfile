@@ -39,6 +39,10 @@ RUN curl -L --fail --show-error --silent \
     tar xzf spark-3.5.0-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 && \
     rm -rf spark-3.5.0-bin-hadoop3.tgz
 
+# Variáveis de ambiente para Spark
+ENV SPARK_HOME="/opt/spark"
+ENV PATH="/opt/spark/sbin:/opt/spark/bin:${PATH}"
+
 # Prepara o ambiente com PySpark
 FROM spark-base as pyspark
 
@@ -48,11 +52,6 @@ RUN pip3 install -r requirements.txt
 
 # Mais variáveis de ambiente
 ENV PATH="/opt/spark/sbin:/opt/spark/bin:${PATH}"
-ENV SPARK_HOME="/opt/spark"
-ENV SPARK_MASTER="spark://spark-master:7077"
-ENV SPARK_MASTER_HOST spark-master
-ENV SPARK_MASTER_PORT 7077
-ENV PYSPARK_PYTHON python3
 
 # Copia o arquivo de configuração do Spark para a imagem
 COPY conf/spark-defaults.conf "$SPARK_HOME/conf"
