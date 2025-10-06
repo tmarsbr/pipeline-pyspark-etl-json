@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "email": "joao.silva@email.com",
+    "idade": 28,
+    "cidade": "São Paulo",
+    "data_cadastro": "2024-01-15T10:30:00",
+    "ativo": true,
+    "tags": ["premium", "early_adopter"]
+  },
+  {
+    "id": 2,
+    "nome": "Maria Santos",
+    "email": "maria.santos@email.com",
+    "idade": 35,
+    "cidade": "Rio de Janeiro",
+    "data_cadastro": "2024-02-20T14:15:00",
+    "ativo": true,
+    "tags": ["standard"]
+  },
+  {
+    "id": 3,
+    "nome": "Pedro Oliveira",
+    "email": "pedro.oliveira@email.com",
+    "idade": null,
+    "cidade": "Belo Horizonte",
+    "data_cadastro": "2024-03-10T09:00:00",
+    "ativo": false,
+    "tags": []
+  },
+  {
+    "id": 4,
+    "nome": "Ana Costa",
+    "email": "ana.costa@email.com",
+    "idade": 42,
+    "cidade": "Brasília",
+    "data_cadastro": "2024-01-25T16:45:00",
+    "ativo": true,
+    "tags": ["premium", "vip"]
+  },
+  {
+    "id": 5,
+    "nome": "Carlos Souza",
+    "email": null,
+    "idade": 31,
+    "cidade": "Curitiba",
+    "data_cadastro": "2024-04-05T11:20:00",
+    "ativo": true,
+    "tags": ["standard"]
+  }
+]

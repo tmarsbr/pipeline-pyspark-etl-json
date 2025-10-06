@@ -3,7 +3,7 @@
 # Configuração do Cluster PySpark
 
 # Criar e Inicializar o Cluster
-docker-compose -f docker-compose.yml up -d --scale spark-worker=2
+docker compose -f docker-compose.yml up -d --scale spark-worker=2
 
 # Spark Master
 http://localhost:9091

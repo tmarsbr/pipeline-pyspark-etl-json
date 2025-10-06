@@ -1,0 +1,63 @@
+[
+  {
+    "transacao_id": "TRX001",
+    "usuario_id": 1,
+    "valor": 150.50,
+    "moeda": "BRL",
+    "data_transacao": "2024-05-01T10:30:00",
+    "status": "aprovada",
+    "metodo_pagamento": {
+      "tipo": "cartao_credito",
+      "bandeira": "Visa",
+      "ultimos_digitos": "4532"
+    }
+  },
+  {
+    "transacao_id": "TRX002",
+    "usuario_id": 2,
+    "valor": 89.90,
+    "moeda": "BRL",
+    "data_transacao": "2024-05-02T14:15:00",
+    "status": "aprovada",
+    "metodo_pagamento": {
+      "tipo": "pix",
+      "chave": "email"
+    }
+  },
+  {
+    "transacao_id": "TRX003",
+    "usuario_id": 1,
+    "valor": 250.00,
+    "moeda": "BRL",
+    "data_transacao": "2024-05-03T09:00:00",
+    "status": "recusada",
+    "metodo_pagamento": {
+      "tipo": "cartao_credito",
+      "bandeira": "Mastercard",
+      "ultimos_digitos": "5678"
+    }
+  },
+  {
+    "transacao_id": "TRX004",
+    "usuario_id": 4,
+    "valor": 1200.00,
+    "moeda": "BRL",
+    "data_transacao": "2024-05-04T16:45:00",
+    "status": "aprovada",
+    "metodo_pagamento": {
+      "tipo": "boleto"
+    }
+  },
+  {
+    "transacao_id": "TRX005",
+    "usuario_id": 5,
+    "valor": 45.50,
+    "moeda": "BRL",
+    "data_transacao": "2024-05-05T11:20:00",
+    "status": "pendente",
+    "metodo_pagamento": {
+      "tipo": "pix",
+      "chave": "telefone"
+    }
+  }
+]
